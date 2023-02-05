@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
@@ -15,6 +15,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { CodingComponent } from './pages/coding/coding.component';
 
 
 
@@ -24,7 +25,8 @@ import {MatIconModule} from '@angular/material/icon';
     TopbarComponent,
     LoginComponent,
     CreateAccountComponent,
-    HomeComponent
+    HomeComponent,
+    CodingComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     HttpClientModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MonacoEditorModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
