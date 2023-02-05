@@ -16,7 +16,7 @@ import { HomeComponent } from './pages/home/home.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { CodingComponent } from './pages/coding/coding.component';
-
+import {MatSelectModule} from '@angular/material/select'
 
 
 @NgModule({
@@ -41,6 +41,7 @@ import { CodingComponent } from './pages/coding/coding.component';
     MatMenuModule,
     MatIconModule,
     MonacoEditorModule.forRoot(),
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
