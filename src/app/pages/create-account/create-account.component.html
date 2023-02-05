@@ -5,16 +5,22 @@
          <mat-form-field appearance ="outline">
              <mat-label> Enter your Email</mat-label>
              <input matInput formControlName ="email">
+             <mat-error  *ngIf ="createAccountForm.controls.email.invalid">
+                {{createAccountForm.controls.email.hasError('required')?"email is required":"enter the valid email" }}
+            </mat-error>
          </mat-form-field>
          <br>
          <mat-form-field appearance ="outline">
              <mat-label> Enter your Password</mat-label>
              <input type = "password" matInput formControlName ="password">
+             <mat-error  *ngIf ="createAccountForm.controls.password.invalid">
+                {{createAccountForm.controls.password.hasError('required')?"password is required":"Password should be atleast 6  characters long" }}
+            </mat-error>
          </mat-form-field>
      </form>
-     {{createAccountForm.value |json}}
+     
      <div class="buttons-container">
-         <button class="login-button" mat-raised-button>Create Account</button>
+         <button  [disabled] ="createAccountForm.invalid" class="login-button" mat-raised-button>Create Account</button>
          <p>OR</p>
          <button routerLink = '/login' mat-button> Login</button>
      </div>
