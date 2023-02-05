@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create-account',
@@ -7,11 +8,20 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./create-account.component.css']
 })
 export class CreateAccountComponent {
-  constructor(private fb:FormBuilder){}
+  constructor(private fb:FormBuilder, public userService :UserService){}
   ngOnInit() :void{}
 
   createAccountForm = this.fb.group({
     email : ['' ,[Validators.required ,Validators.email]],
     password: ['' ,[Validators.required ,Validators.minLength(6)]]
   })
+
+  create(){
+    this.userService.createAccount(this.createAccountForm.value).then((res)=>{
+      console.log(res);
+      console.log("hello insede the create docu,ent")
+    }).catch((err)=>{
+      console.log(err);
+    });
+  }
 }
