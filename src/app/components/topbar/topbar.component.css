@@ -27,3 +27,10 @@
     padding-right: 20px;
     align-items: center;
 }
+.profile-container{
+    display :flex;
+    flex-direction:row-reverse;
+    width: 50%;
+    padding-right: 20px;
+    align-items: center;
+}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./create-account.component.css']
 })
 export class CreateAccountComponent {
-  constructor(private fb:FormBuilder, public userService :UserService){}
+  constructor(private fb:FormBuilder, public userService :UserService ,private router :Router){}
   ngOnInit() :void{}
 
   createAccountForm = this.fb.group({
@@ -17,11 +18,20 @@ export class CreateAccountComponent {
   })
 
   create(){
-    this.userService.createAccount(this.createAccountForm.value).then((res)=>{
+    this.userService.createAccount(this.createAccountForm.value).subscribe((res :any)=>{
       console.log(res);
-      console.log("hello insede the create docu,ent")
-    }).catch((err)=>{
-      console.log(err);
-    });
+      if(!res.error){
+        this.userService.user =res.response;
+        localStorage.setItem('user' ,JSON.stringify(res.response));
+        this.router.navigate(['/home']);
+      }
+    })
+    // .then((res)=>{
+      
+    //   console.log(res);
+     
+    // }).catch((err)=>{
+    //   console.log(err);
+    // });
   }
 }
