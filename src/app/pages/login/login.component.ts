@@ -23,15 +23,14 @@ export class LoginComponent {
    })
 
    login(){
-    this.userService.login(this.loginForm.value).then((res :any)=>{
-      console.log(res)
-      if(!res.error){
-        this.userService.user =res.response;
-        localStorage.setItem('user' ,JSON.stringify(res.response));
-        this.router.navigate(['/home']);
-      }
-    }).catch((err)=>{
-      console.log(err);
-    });
+    this.userService.login(this.loginForm.value).subscribe((res:any)=>{
+      console.log(res);
+        if(!res.error){
+          this.userService.user =res.response;
+          localStorage.setItem('user' ,JSON.stringify(res.response));
+          this.router.navigate(['/home']);
+        }
+    })
+   
    }
 }

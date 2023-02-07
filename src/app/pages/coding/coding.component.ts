@@ -11,4 +11,8 @@ ngOnInit(): void{}
 
 editorOptions = {theme: 'vs-dark', language: 'javascript'};
 code: string= 'function x() {\nconsole.log("Hello world!");\n}';
+
+run(){
+  console.log("code has been ru!!")
+}
 }

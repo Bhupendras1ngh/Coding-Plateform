@@ -11,18 +11,20 @@ import { UserService } from 'src/app/services/user.service';
 export class HomeComponent {
    constructor(public fiddleService :FiddleService ,public userService :UserService ,private router : Router){}
    ngOnInit(){
-    this.fiddleService.getFiddles().then((res: any)=>{
-      this.fiddles =res.response;
+    this.fiddleService.getFiddles().subscribe((res: any)=>{
+      this.fiddles .push(res.response);
+      console.log("^^^");
       console.log(this.fiddles)
     })
    }
   fiddles:Array<any> =[];
 
    create(){
-    this.fiddleService.newFiddle().then((res:any)=>{
-      console.log(res);
-    }).catch((err)=>{
-      console.log(err)
-    })
+    this.fiddleService.newFiddle().subscribe(
+      (res:any)=>{
+        console.log("***");
+        console.log(res);
+      }
+    )
    }
 }

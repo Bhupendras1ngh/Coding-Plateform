@@ -18,20 +18,16 @@ export class CreateAccountComponent {
   })
 
   create(){
-    this.userService.createAccount(this.createAccountForm.value).subscribe((res :any)=>{
+    this.userService.createAccount(this.createAccountForm.value).subscribe(
+      (res :any)=>{
       console.log(res);
       if(!res.error){
         this.userService.user =res.response;
         localStorage.setItem('user' ,JSON.stringify(res.response));
         this.router.navigate(['/home']);
       }
-    })
-    // .then((res)=>{
-      
-    //   console.log(res);
-     
-    // }).catch((err)=>{
-    //   console.log(err);
-    // });
+    }
+    )
+   
   }
 }
